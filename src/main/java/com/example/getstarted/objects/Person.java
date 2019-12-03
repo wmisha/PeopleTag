@@ -22,19 +22,33 @@ public class Person {
   private String last;
   private String createdBy;
   private String createdById;
-
+  private String jobTitle;
   private String description;
+
+  private String facebook;
+  private String instagram;
+  private String linkedIn;
+  private String twitter;
+//  private HashMap<String, String> socialLinks;
+
   private Long id;
   private String imageUrl;
   // [END person]
+
   // [START keys]
+  public static final String FIRST = "first";
   public static final String LAST = "last";
   public static final String CREATED_BY = "createdBy";
   public static final String CREATED_BY_ID = "createdById";
+  public static final String JOB_TITLE = "jobTitle";
   public static final String DESCRIPTION = "description";
+  public static final String FACEBOOK = "facebook";
+  public static final String INSTAGRAM = "instagram";
+  public static final String LINKEDIN = "linkedIn";
+  public static final String TWITTER = "twitter";
+//  public static final String SOCIAL_LINKS = "socialLinks";
+
   public static final String ID = "id";
- 
-  public static final String FIRST = "first";
   public static final String IMAGE_URL = "imageUrl";
   // [END keys]
 
@@ -45,8 +59,15 @@ public class Person {
     this.last = builder.last;
     this.createdBy = builder.createdBy;
     this.createdById = builder.createdById;
-
+    this.jobTitle = builder.jobTitle;
     this.description = builder.description;
+
+    this.facebook = builder.facebook;
+    this.instagram = builder.instagram;
+    this.linkedIn = builder.linkedIn;
+    this.twitter = builder.twitter;
+//    this.socialLinks = builder.socialLinks;
+
     this.id = builder.id;
     this.imageUrl = builder.imageUrl;
   }
@@ -58,8 +79,15 @@ public class Person {
     private String last;
     private String createdBy;
     private String createdById;
+    private String jobTitle;
     private String publishedDate;
     private String description;
+
+    private String facebook;
+    private String instagram;
+    private String linkedIn;
+    private String twitter;
+//    private HashMap<String, String> socialLinks;
     private Long id;
     private String imageUrl;
 
@@ -83,11 +111,40 @@ public class Person {
       return this;
     }
 
+    public Builder jobTitle(String jobTitle) {
+      this.jobTitle = jobTitle;
+      return this;
+    }
 
     public Builder description(String description) {
       this.description = description;
       return this;
     }
+
+    public Builder facebook(String facebook) {
+      this.facebook = facebook;
+      return this;
+    }
+
+    public Builder instagram(String instagram) {
+      this.instagram = instagram;
+      return this;
+    }
+
+    public Builder linkedIn(String linkedIn) {
+      this.linkedIn = linkedIn;
+      return this;
+    }
+
+    public Builder twitter(String twitter) {
+      this.twitter = twitter;
+      return this;
+    }
+
+//    public Builder socialLinks(HashMap<String, String> socialLinks) {
+//      this.socialLinks = socialLinks;
+//      return this;
+//    }
 
     public Builder id(Long id) {
       this.id = id;
@@ -136,6 +193,13 @@ public class Person {
     this.createdById = createdById;
   }
 
+  public String getJobTitle() {
+    return jobTitle;
+  }
+
+  public void setJobTitle(String jobTitle) {
+    this.jobTitle = jobTitle;
+  }
 
   public String getDescription() {
     return description;
@@ -143,6 +207,38 @@ public class Person {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public String getFacebook() {
+    return facebook;
+  }
+
+  public void setFacebook(String facebook) {
+    this.facebook = facebook;
+  }
+
+  public String getInstagram() {
+    return instagram;
+  }
+
+  public void setInstagram(String instagram) {
+    this.instagram = instagram;
+  }
+
+  public String getLinkedIn() {
+    return linkedIn;
+  }
+
+  public void setLinkedIn(String linkedIn) {
+    this.linkedIn = linkedIn;
+  }
+
+  public String getTwitter() {
+    return twitter;
+  }
+
+  public void setTwitter(String twitter) {
+    this.twitter = twitter;
   }
 
   public Long getId() {
@@ -161,11 +257,22 @@ public class Person {
     this.imageUrl = imageUrl;
   }
 
-  // [END builder]
-  @Override
-  public String toString() {
-    return
-        "First: " + first + ", Last: " + last + ", Added by: " + createdBy;
+  @java.lang.Override
+  public java.lang.String toString() {
+    return "Person{" +
+            "first='" + first + '\'' +
+            ", last='" + last + '\'' +
+            ", createdBy='" + createdBy + '\'' +
+            ", createdById='" + createdById + '\'' +
+            ", jobTitle='" + jobTitle + '\'' +
+            ", description='" + description + '\'' +
+            ", facebook='" + facebook + '\'' +
+            ", instagram='" + instagram + '\'' +
+            ", linkedIn='" + linkedIn + '\'' +
+            ", twitter='" + twitter + '\'' +
+            ", id=" + id +
+            ", imageUrl='" + imageUrl + '\'' +
+            '}';
   }
 }
 // [END example]

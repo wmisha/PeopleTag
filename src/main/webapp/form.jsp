@@ -33,10 +33,36 @@ Copyright 2016 Google Inc.
       <input type="text" name="last" id="last" value="${fn:escapeXml(person.last)}" class="form-control" />
     </div>
 
+    <div class="form-group">
+          <label for="jobTitle">JobTitle</label>
+          <input type="text" name="jobTitle" id="jobTitle" value="${fn:escapeXml(person.jobTitle)}" class="form-control" />
+        </div>
+
 
     <div class="form-group">
       <label for="description">Description</label>
       <textarea name="description" id="description" class="form-control">${fn:escapeXml(person.description)}</textarea>
+    </div>
+
+    <h4>Social Media Links:</h4>
+    <div class="form-group">
+          <label for="facebook">Facebook</label>
+          <input type="text" name="facebook" id="facebook" value="${fn:escapeXml(person.facebook)}" class="form-control" />
+    </div>
+
+    <div class="form-group">
+          <label for="instagram">Instagram</label>
+          <input type="text" name="instagram" id="instagram" value="${fn:escapeXml(person.instagram)}" class="form-control" />
+    </div>
+
+    <div class="form-group">
+          <label for="linkedIn">LinkedIn</label>
+          <input type="text" name="linkedIn" id="linkedIn" value="${fn:escapeXml(person.linkedIn)}" class="form-control" />
+    </div>
+
+    <div class="form-group">
+          <label for="twitter">Twitter</label>
+          <input type="text" name="twitter" id="twitter" value="${fn:escapeXml(person.twitter)}" class="form-control" />
     </div>
 
     <div class="form-group ${isCloudStorageConfigured ? '' : 'hidden'}">

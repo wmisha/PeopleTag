@@ -92,6 +92,10 @@ public class CreatePersonServlet extends HttpServlet {
         .description(params.get("description"))
         .first(params.get("first"))
         .imageUrl(null == newImageUrl ? params.get("imageUrl") : newImageUrl)
+        .facebook(params.get("facebook"))
+        .instagram(params.get("instagram"))
+        .linkedIn(params.get("linkedIn"))
+        .twitter(params.get("twitter"))
         // [START auth]
         .createdBy(createdByString)
         .createdById(createdByIdString)

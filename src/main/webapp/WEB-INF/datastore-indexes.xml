@@ -4,4 +4,39 @@
         <property name="createdById" direction="asc"/>
         <property name="last" direction="asc"/>
     </datastore-index>
+    <datastore-index kind="Post4" ancestor="false" source="auto">
+        <property name="createdById" direction="asc"/>
+        <property name="title" direction="asc"/>
+    </datastore-index>
+    <datastore-index kind="Collection4" ancestor="false" source="auto">
+        <property name="createdById" direction="asc"/>
+        <property name="last" direction="asc"/>
+    </datastore-index>
+    <datastore-index kind="PersonCollection4" ancestor="false" source="manual">
+        <property name="personId" direction="asc"/>
+        <property name="collectionId" direction="asc"/>
+    </datastore-index>
+    <datastore-index kind="PersonCollection4" ancestor="false" source="manual">
+        <property name="collectionId" direction="asc"/>
+        <property name="personId" direction="asc"/>
+    </datastore-index>
+    <datastore-index kind="PersonPost4" ancestor="false" source="manual">
+        <property name="personId" direction="asc"/>
+        <property name="postId" direction="asc"/>
+    </datastore-index>
+    <datastore-index kind="PersonPost4" ancestor="false" source="manual">
+        <property name="postId" direction="asc"/>
+        <property name="personId" direction="asc"/>
+    </datastore-index>
+    <datastore-index kind="CollectionPost4" ancestor="false" source="manual">
+        <property name="collectionId" direction="asc"/>
+        <property name="postId" direction="asc"/>
+    </datastore-index>
+    <datastore-index kind="CollectionPost4" ancestor="false" source="manual">
+        <property name="postId" direction="asc"/>
+        <property name="collectionId" direction="asc"/>
+    </datastore-index>
+
+
+
 </datastore-indexes>

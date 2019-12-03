@@ -31,8 +31,12 @@ Copyright 2016 Google Inc.
         </div>
         <ul class="nav navbar-nav">
           <li><a href="/">Persons</a></li>
+          <li><a href="/collections">Collections</a></li>
+          <li><a href="/posts">Posts</a></li>
           <li><a href="/persons/mine">My Persons</a></li>
+
         </ul>
+
         <p class="navbar-text navbar-right">
           <c:choose>
           <c:when test="${not empty userEmail}">

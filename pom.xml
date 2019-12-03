@@ -37,7 +37,7 @@ Copyright 2016 Google Inc.
     <sql.userName>root</sql.userName>                         <!-- A reasonable default -->
     <sql.password>MYSQL-ROOT-PASSWORD-HERE</sql.password> <!-- -Dsql.password=myRootPassword1234 -->
 	<!-- CHANGE dwpersonshelf below to id of your app -->
-    <personshelf.bucket>dwpersonshelf.appspot.com</personshelf.bucket> <!-- eg project-id.appspot.com -->
+    <personshelf.bucket>phpersonshelf.appspot.com</personshelf.bucket> <!-- eg project-id.appspot.com -->
     <!-- [END config] -->
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -27,6 +27,10 @@ Copyright 2016 Google Inc.
       <i class="glyphicon glyphicon-trash"></i>
       Delete person
     </a>
+    <a href="/personcollections?id=${person.id}" class="btn btn-success btn-sm">
+          <i class="glyphicon glyphicon-edit"></i>
+          Collections
+    </a>
   </div>
 
   <div class="media">
@@ -39,9 +43,68 @@ Copyright 2016 Google Inc.
       </h4>
       <h5 class="person-last">${fn:escapeXml(not empty person.last?person.last:'Unknown')}</h5>
       <p class="person-description">${fn:escapeXml(person.description)}</p>
+      <p class="person-jobTitle">${fn:escapeXml(person.jobTitle)}</p>
+      <hr />
+      <c:if test="${not empty person.facebook}">
+        <a href="${fn:escapeXml(person.facebook)}">
+          <img src="https://blog-assets.hootsuite.com/wp-content/uploads/2018/09/f-ogo_RGB_HEX-58.png" width="32">
+        </a>
+      </c:if>
+      <c:if test="${not empty person.instagram}">
+        <a href="${fn:escapeXml(person.instagram)}">
+          <img src="https://blog.hootsuite.com/wp-content/uploads/2018/09/glyph-logo_May2016-150x150.png" width="32">
+        </a>
+      </c:if>
+      <c:if test="${not empty person.linkedIn}">
+        <a href="${fn:escapeXml(person.linkedIn)}">
+          <img src="https://blog-assets.hootsuite.com/wp-content/uploads/2018/09/In-2C-54px-R.png" width="32">
+        </a>
+      </c:if>
+      <c:if test="${not empty person.twitter}">
+        <a href="${fn:escapeXml(person.twitter)}">
+          <img src="https://blog.hootsuite.com/wp-content/uploads/2018/09/Twitter_Logo_Blue-150x150.png" width="32">
+        </a>
+      </c:if>
+      <hr />
       <small class="person-added-by">Added by
         ${fn:escapeXml(not empty person.createdBy?person.createdBy:'Anonymous')}</small>
     </div>
   </div>
+
+  <c:forEach items="${collections}" var="collection">
+  <div class="media">
+    <a href="/readCollection?id=${collection.id}">
+      <div class="media-left">
+        <img alt="ahhh" height="200" src="${fn:escapeXml(not empty collection.imageUrl?collection.imageUrl:'http://placekitten.com/g/128/192')}">
+      </div>
+      <div class="media-body">
+        <h4>${fn:escapeXml(collection.name)}</h4>
+        <p>${fn:escapeXml(collection.description)}</p>
+      </div>
+    </a>
+  </div>
+  </c:forEach>
+  <hr />
+  <h4>Posts tagged with this person:</h4>
+  <c:choose>
+  <c:when test="${empty posts}">
+  <p>No posts found</p>
+  </c:when>
+  <c:otherwise>
+  <c:forEach items="${posts}" var="post">
+  <div class="media">
+    <a href="/readPost?id=${post.id}"><b>${fn:escapeXml(post.title)}</b></a></br>
+  </div>
+  </c:forEach>
+  <c:if test="${not empty cursor}">
+         <nav>
+           <ul class="pager">
+             <li><a href="?id=${person.id}&cursor=${fn:escapeXml(cursor)}">More</a></li>
+           </ul>
+         </nav>
+         </c:if>
+  </c:otherwise>
+  </c:choose>
+
 </div>
 <!-- [END view] -->

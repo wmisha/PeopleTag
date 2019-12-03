@@ -28,6 +28,8 @@
     <filter-mapping>
       <filter-name>DatastoreSessionFilter</filter-name>
       <url-pattern>/</url-pattern>
+      <url-pattern>/collections</url-pattern>
+      <url-pattern>/posts</url-pattern>
       <url-pattern>/persons</url-pattern>
       <url-pattern>/persons/mine</url-pattern>
       <url-pattern>/create</url-pattern>
@@ -68,12 +70,96 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>EachPersonCollection</servlet-name>
+        <servlet-class>com.example.getstarted.basicactions.EachPersonCollectionServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EachPersonCollection</servlet-name>
+        <url-pattern>/personcollections</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ReadPersonCollection</servlet-name>
+        <servlet-class>com.example.getstarted.basicactions.ReadPersonCollectionServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReadPersonCollection</servlet-name>
+        <url-pattern>/readpersoncollection</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>listPost</servlet-name>
+        <servlet-class>com.example.getstarted.basicactions.ListPostServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>listPost</servlet-name>
+
+        <url-pattern>/posts</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>listCollection</servlet-name>
+        <servlet-class>com.example.getstarted.basicactions.ListCollectionServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>listCollection</servlet-name>
+
+        <url-pattern>/collections</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>listaddCollection</servlet-name>
+        <servlet-class>com.example.getstarted.basicactions.ListaddCollectionServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>listaddCollection</servlet-name>
+
+        <url-pattern>/addcollection</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>CreatePersonCollection</servlet-name>
+        <servlet-class>com.example.getstarted.basicactions.CreatePersonCollectionServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreatePersonCollection</servlet-name>
+
+        <url-pattern>/addedcollection</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
       <servlet-name>create</servlet-name>
       <servlet-class>com.example.getstarted.basicactions.CreatePersonServlet</servlet-class>
     </servlet>
     <servlet-mapping>
       <servlet-name>create</servlet-name>
       <url-pattern>/create</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>createCollection</servlet-name>
+        <servlet-class>com.example.getstarted.basicactions.CreateCollectionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>createCollection</servlet-name>
+        <url-pattern>/createCollection</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>createPost</servlet-name>
+        <servlet-class>com.example.getstarted.basicactions.CreatePostServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>createPost</servlet-name>
+        <url-pattern>/createPost</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -95,12 +181,59 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>readCollection</servlet-name>
+        <servlet-class>com.example.getstarted.basicactions.ReadCollectionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>readCollection</servlet-name>
+        <url-pattern>/readCollection</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>readPost</servlet-name>
+        <servlet-class>com.example.getstarted.basicactions.ReadPostServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>readPost</servlet-name>
+        <url-pattern>/readPost</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
       <servlet-name>delete</servlet-name>
       <servlet-class>com.example.getstarted.basicactions.DeletePersonServlet</servlet-class>
     </servlet>
     <servlet-mapping>
       <servlet-name>delete</servlet-name>
       <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteCollection</servlet-name>
+        <servlet-class>com.example.getstarted.basicactions.DeleteCollectionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteCollection</servlet-name>
+        <url-pattern>/deleteCollection</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeletePost</servlet-name>
+        <servlet-class>com.example.getstarted.basicactions.DeletePostServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeletePost</servlet-name>
+        <url-pattern>/deletePost</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeletePersonCollection</servlet-name>
+        <servlet-class>com.example.getstarted.basicactions.DeletePersonCollectionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeletePersonCollection</servlet-name>
+        <url-pattern>/deletePersonCollection</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -128,6 +261,26 @@
     <servlet-mapping>
       <servlet-name>listbyuser</servlet-name>
       <url-pattern>/persons/mine</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TagPerson</servlet-name>
+        <servlet-class>com.example.getstarted.basicactions.TagPersonServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TagPerson</servlet-name>
+        <url-pattern>/tagperson</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TagCollection</servlet-name>
+        <servlet-class>com.example.getstarted.basicactions.TagCollectionServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TagCollection</servlet-name>
+        <url-pattern>/tagcollection</url-pattern>
     </servlet-mapping>
 
     <!-- [START config] -->

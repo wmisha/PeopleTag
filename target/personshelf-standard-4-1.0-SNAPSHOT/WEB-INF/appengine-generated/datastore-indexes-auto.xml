@@ -1,0 +1,11 @@
+<!-- Indices written at Mon, 11 Nov 2019 11:09:40 PST -->
+
+<datastore-indexes>
+
+    <!-- Used 1 time in query history -->
+    <datastore-index kind="PersonCollection4" ancestor="false" source="auto">
+        <property name="personId" direction="asc"/>
+        <property name="collectionId" direction="asc"/>
+    </datastore-index>
+
+</datastore-indexes>

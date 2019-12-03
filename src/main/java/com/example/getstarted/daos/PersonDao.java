@@ -17,6 +17,7 @@ package com.example.getstarted.daos;
 
 import com.example.getstarted.objects.Person;
 import com.example.getstarted.objects.Result;
+import java.util.List;
 
 import java.sql.SQLException;
 
@@ -33,5 +34,7 @@ public interface PersonDao {
   Result<Person> listPersons(String startCursor) throws SQLException;
 
   Result<Person> listPersonsByUser(String userId, String startCursor) throws SQLException;
+
+  List<Person> listAllPersons() throws SQLException;
 }
 // [END example]

@@ -92,6 +92,10 @@ public class UpdatePersonServlet extends HttpServlet {
           .id(Long.decode(params.get("id")))
           .createdBy(oldPerson.getCreatedBy())
           .createdById(oldPerson.getCreatedById())
+          .facebook(params.get("facebook"))
+          .instagram(params.get("instagram"))
+          .linkedIn(params.get("linkedIn"))
+          .twitter(params.get("twitter"))
           .build();
       // [END personBuilder]
 

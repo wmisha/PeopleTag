@@ -51,13 +51,18 @@ public class DatastoreDao implements PersonDao {
   public Person entityToPerson(Entity entity) {
     return new Person.Builder()                                     // Convert to Person form
         .last((String) entity.getProperty(Person.LAST))
-        .description((String) entity.getProperty(Person.DESCRIPTION))
+        .jobTitle((String) entity.getProperty(Person.JOB_TITLE))
         .id(entity.getKey().getId())
         .imageUrl((String) entity.getProperty(Person.IMAGE_URL))
         .createdBy((String) entity.getProperty(Person.CREATED_BY))
         .createdById((String) entity.getProperty(Person.CREATED_BY_ID))
         .first((String) entity.getProperty(Person.FIRST))
-        .build();
+        .description((String) entity.getProperty(Person.DESCRIPTION))
+            .facebook((String) entity.getProperty(Person.FACEBOOK))
+            .instagram((String) entity.getProperty(Person.INSTAGRAM))
+            .linkedIn((String) entity.getProperty(Person.LINKEDIN))
+            .twitter((String) entity.getProperty(Person.TWITTER)).build();
+//            .description((HashMap<String, String>) entity.getProperty(Person.SOCIAL_LINKS)).build();
   }
   // [END entityToPerson]
 
@@ -66,11 +71,18 @@ public class DatastoreDao implements PersonDao {
   public Long createPerson(Person person) {
     Entity incPersonEntity = new Entity(PERSON_KIND);  // Key will be assigned once written
     incPersonEntity.setProperty(Person.LAST, person.getLast());
+    incPersonEntity.setProperty(Person.JOB_TITLE, person.getJobTitle());
     incPersonEntity.setProperty(Person.DESCRIPTION, person.getDescription());
     incPersonEntity.setProperty(Person.FIRST, person.getFirst());
     incPersonEntity.setProperty(Person.IMAGE_URL, person.getImageUrl());
     incPersonEntity.setProperty(Person.CREATED_BY, person.getCreatedBy());
     incPersonEntity.setProperty(Person.CREATED_BY_ID, person.getCreatedById());
+
+    incPersonEntity.setProperty(Person.FACEBOOK, person.getFacebook());
+    incPersonEntity.setProperty(Person.INSTAGRAM, person.getInstagram());
+    incPersonEntity.setProperty(Person.LINKEDIN, person.getLinkedIn());
+    incPersonEntity.setProperty(Person.TWITTER, person.getTwitter());
+//    incPersonEntity.setProperty(Person.SOCIAL_LINKS, person.getSocialLinks());
 
     Key personKey = datastore.put(incPersonEntity); // Save the Entity
     return personKey.getId();                     // The ID of the Key
@@ -96,11 +108,17 @@ public class DatastoreDao implements PersonDao {
     Entity entity = new Entity(key);         // Convert Person to an Entity
     entity.setProperty(Person.LAST, person.getLast());
     entity.setProperty(Person.DESCRIPTION, person.getDescription());
+    entity.setProperty(Person.JOB_TITLE, person.getJobTitle());
     entity.setProperty(Person.FIRST, person.getFirst());
     entity.setProperty(Person.IMAGE_URL, person.getImageUrl());
     entity.setProperty(Person.CREATED_BY, person.getCreatedBy());
     entity.setProperty(Person.CREATED_BY_ID, person.getCreatedById());
 
+    entity.setProperty(Person.FACEBOOK, person.getFacebook());
+    entity.setProperty(Person.INSTAGRAM, person.getInstagram());
+    entity.setProperty(Person.LINKEDIN, person.getLinkedIn());
+    entity.setProperty(Person.TWITTER, person.getTwitter());
+//    entity.setProperty(Person.SOCIAL, person.getSocial());
     datastore.put(entity);                   // Update the Entity
   }
   // [END update]
@@ -133,8 +151,8 @@ public class DatastoreDao implements PersonDao {
     Query query = new Query(PERSON_KIND) // We only care about Persons
         .addSort(Person.FIRST, SortDirection.ASCENDING); // Use default Index "first"
     PreparedQuery preparedQuery = datastore.prepare(query);
-    QueryResultIterator<Entity> results = preparedQuery.asQueryResultIterator(fetchOptions);
 
+    QueryResultIterator<Entity> results = preparedQuery.asQueryResultIterator(fetchOptions);
     List<Person> resultPersons = entitiesToPersons(results);     // Retrieve and convert Entities
     Cursor cursor = results.getCursor();              // Where to start next time
     if (cursor != null && resultPersons.size() == 10) {         // Are we paging? Save Cursor
@@ -173,5 +191,15 @@ public class DatastoreDao implements PersonDao {
     }
   }
   // [END listbyuser]
+
+  @Override
+  public List<Person> listAllPersons() {
+    Query query = new Query(PERSON_KIND) // We only care about Persons
+            .addSort(Person.FIRST, SortDirection.ASCENDING); // Use default Index "first"
+    PreparedQuery preparedQuery = datastore.prepare(query);
+
+    QueryResultIterator<Entity> results = preparedQuery.asQueryResultIterator();
+    return entitiesToPersons(results);     // Retrieve and convert Entities
+  }
 }
 // [END example]
